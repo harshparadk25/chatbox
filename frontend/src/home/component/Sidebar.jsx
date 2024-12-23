@@ -135,8 +135,13 @@ const Sidebar = ({ onSelectUser }) => {
                        <IoSearchSharp/>
                     </button>
                 </form>
-                <img
-                    onClick={() => navigate(`/profile/${authUser?._id}`)}
+                <img 
+                    onClick={() => {
+                        console.log(`Navigating to /profile/${authUser?._id}`);
+                        console.log(authUser);
+                        navigate(`/profile/${authUser?._id}`);
+
+                    }}
                     src={authUser?.pic}
                     className='self-center h-12 w-12 hover:scale-110 cursor-pointer' />
             </div>

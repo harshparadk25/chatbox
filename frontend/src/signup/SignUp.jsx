@@ -9,6 +9,7 @@ const Register = () => {
     const {setAuthUser} = useAuth();
     const [loading , setLoading] = useState(false);
     const [inputData , setInputData] = useState({});
+    const [selectedLanguage, setSelectedLanguage] = useState("");
 
     const languages = [ "Auto", "Afrikaans", "Albanian", "Arabic", "Armenian", "Azerbaijani", 
         "Basque", "Belarusian", "Bulgarian", "Catalan", "Chinese (Simplified)", 
@@ -27,6 +28,7 @@ const Register = () => {
         })
     }
 console.log(inputData);
+
     const selectGender=(selectGender)=>{
         setInputData((prev)=>({
             ...prev , gender:selectGender === inputData.gender ? '' : selectGender
@@ -75,7 +77,7 @@ console.log(inputData);
                             </label>
                             <input
                                 id='fullname'
-                                pattern="[A-Za-z]+"
+                                pattern="[A-Za-z\s]+"
                                 type='text'
                                 onChange={handelInput}
                                 placeholder='Enter Full Name'
@@ -115,11 +117,17 @@ console.log(inputData);
                             </label>
                             <input
                                 id='language'
+                                list="languageList"
                                 type='language'
                                 onChange={handelInput}
                                 placeholder='Enter preferred language'
                                 required
-                                className='w-full input input-bordered h-10' />
+                                className='w-full input input-bordered h-10 ' />
+                                <datalist id="languageList" className='cursor-pointer'>
+                                {languages.map((language, index) => (
+                                <option key={index} value={language} />
+                                ))}
+      </datalist>
                         </div>
 
                         <div>

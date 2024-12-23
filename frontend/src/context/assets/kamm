@@ -1,15 +1,26 @@
-/* import { createContext , useContext ,useState } from "react";
+/* import React from "react";
+import { useAuth } from "../context/AuthContext";
 
-export const AuthContext = createContext();
+const Profile =()=>{
+  const {authUser} = useAuth();
 
-export  const useAuth =()=>{
-    return useContext(AuthContext)
+  if (!authUser) {
+    return <div>Loading...</div>;
+  }
+
+  return(
+    <div>
+       <h1 >Profile Page</h1>
+      <img 
+        src={authUser.pic || 'https://via.placeholder.com/150'} 
+        alt="Profile"
+        style={{ width: '150px', height: '150px', borderRadius: '50%' }}
+      />
+      <h2>{authUser.username}</h2>
+      <p>Email: {authUser.email}</p>
+      {/* Add more fields as per your authUser object */}
+    </div>
+  )
 }
 
-export const AuthContextProvider =({children})=>{
-    const [authUser , setAuthUser] = useState(JSON.parse(localStorage.getItem('chatApp')) || null);
-
-    return <AuthContext.Provider value={{authUser ,setAuthUser}}>
-        {children}
-    </AuthContext.Provider>
-} */
+export default Profile; */
